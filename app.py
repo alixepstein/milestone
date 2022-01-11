@@ -1,11 +1,13 @@
 import streamlit as st
-import pandas as pdimport requestsimport json
-
+import pandas as pd
+import requests
+import json
 from bokeh.plotting import figure, show
-
 from bokeh.io import output_notebook
-st.title('Stock prices')symbol_input = st.text_input(label="Ticker", help="Enter the stock ticker symbol")
 
+st.title('Stock prices')
+
+symbol_input = st.text_input(label="Ticker", help="Enter the stock ticker symbol")
 
 payload = {'function': 'TIME_SERIES_DAILY', 'symbol': symbol_input, 'datatype': 'csv', 'apikey': 'GNN6K0ZEGN5RICF1'}
 url = 'https://www.alphavantage.co/query?'
