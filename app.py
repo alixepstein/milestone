@@ -1,5 +1,8 @@
-import streamlit as stimport pandas as pdimport requestsimport json
+import streamlit as st
+import pandas as pdimport requestsimport json
+
 from bokeh.plotting import figure, show
+
 from bokeh.io import output_notebook
 st.title('Stock prices')symbol_input = st.text_input(label="Ticker", help="Enter the stock ticker symbol")
 
