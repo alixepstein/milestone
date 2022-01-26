@@ -6,9 +6,11 @@ import requests
 
 import json
 
-from bokeh.plotting import figure, show
+import plotly
+import plotly.express as px
+import numpy as np
 
-from bokeh.io import output_notebook
+
 
 st.title('Stock prices')
 symbol_input = st.text_input(label="Ticker", help="Enter the stock ticker symbol")
@@ -24,9 +26,8 @@ def display_data (symbol_input):
     df.index = pd.to_datetime(df.index)
     x = df.index
     y = df['4. close']
-    p = figure(title="Daily Closing Prices", x_axis_type = "datetime", x_axis_label='Date', y_axis_label='Closing Price')
-    p.line(x, y, line_width=2)
-    st.bokeh_chart(p, use_container_width=True)
+    fig = px.line(x=x, y=y, labels={'x':'Date', 'y':'Closing Price'})
+    st.plotly_chart(fig, use_container_width=True)
 
 if st.button('Get info'):
     display_data(symbol_input)
